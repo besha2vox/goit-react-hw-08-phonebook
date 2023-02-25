@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/890.dcad898d.chunk.js","mappings":"sMAIA,EAJqB,WACnB,OAAO,uBACR,C","sources":["pages/ContactsPage/ContactsPage.jsx"],"sourcesContent":["const ContactsPage = () => {\n  return <></>;\n};\n\nexport default ContactsPage;\n"],"names":[],"sourceRoot":""}
