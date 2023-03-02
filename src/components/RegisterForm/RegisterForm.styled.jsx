@@ -36,4 +36,5 @@ export const Input = styled(Field)`
 
 export const SubmitButton = styled.button`
   ${button}
+  margin-top: 8px;
 `;

@@ -9,8 +9,8 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/goit-js-teamproject-filmoteka/">
-      {/* <BrowserRouter> */}
+    {/* <BrowserRouter basename="/goit-js-teamproject-filmoteka/"> */}
+    <BrowserRouter>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <App />

@@ -12,6 +12,10 @@ export const ProfileWrapper = styled.div`
   & svg {
     fill: #aaaaaa;
   }
+
+  & button {
+    margin-top: 8px;
+  }
 `;
 
 export const ProfileTitle = styled.h2`

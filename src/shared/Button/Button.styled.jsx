@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 export const button = css`
-  margin-top: 8px;
   padding: 4px 8px;
   align-self: center;
   font-size: 18px;
