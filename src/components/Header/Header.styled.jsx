@@ -12,3 +12,7 @@ export const HeaderLayout = styled.header`
   background-color: #2e2e2e;
   border-bottom: 1px solid #aaaaaa;
 `;
+
+export const Title = styled.h1`
+  font-size: 28px;
+`;

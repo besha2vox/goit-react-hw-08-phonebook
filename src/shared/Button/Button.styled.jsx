@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ButtonLayout = styled.button`
   width: fit-content;
   border-radius: 50px;
-  padding: 8px 12px;
+  padding: 4px 8px;
   color: inherit;
   background-color: inherit;
   font-size: 14px;

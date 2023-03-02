@@ -48,6 +48,7 @@ export const PhoneFrame = styled.div`
 
 export const Content = styled.div`
   position: relative;
+  padding-top: 54px;
   width: 100%;
   height: 100%;
   overflow: auto;
