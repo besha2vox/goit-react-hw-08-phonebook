@@ -1,16 +1,24 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const ButtonLayout = styled.button`
-  width: fit-content;
-  border-radius: 50px;
+export const button = css`
+  margin-top: 8px;
   padding: 4px 8px;
-  color: inherit;
-  background-color: inherit;
-  font-size: 14px;
-  transition: background-color 300ms ease-in-out;
+  align-self: center;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: color 300ms ease-in-out, background-color 300ms ease-in-out,
+    outline 300ms ease-in-out;
 
   &:hover,
   &:focus {
     background-color: #444444;
+    outline: 1px solid #aaaaaa;
+    color: inherit;
   }
+`;
+
+export const ButtonLayout = styled.button`
+  ${button}
 `;

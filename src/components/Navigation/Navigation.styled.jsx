@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const FooterLayout = styled.footer`
+export const NavigationLayout = styled.footer`
   position: fixed;
   bottom: 0;
   left: 0;
@@ -19,11 +19,11 @@ export const FooterLayout = styled.footer`
   }
 `;
 
-export const FooterList = styled.ul`
+export const NavigationList = styled.ul`
   display: flex;
 `;
 
-export const FooterItem = styled.li`
+export const NavigationItem = styled.li`
   width: 50%;
 `;
 

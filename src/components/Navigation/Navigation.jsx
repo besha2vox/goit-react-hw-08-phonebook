@@ -1,13 +1,13 @@
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
-  FooterLayout,
-  FooterList,
-  FooterItem,
+  NavigationLayout,
+  NavigationList,
+  NavigationItem,
   NavigateLink,
-} from './Footer.styled';
+} from './Navigation.styled';
 
-const Footer = () => {
+const Navigation = () => {
   const [navLinksText, setnavLinksText] = useState([]);
   const location = useLocation();
   const { pathname } = location;
@@ -17,24 +17,24 @@ const Footer = () => {
       setnavLinksText(['Contacts', 'Profile']);
     }
 
-    if (pathname.includes('login') || pathname.includes('signup')) {
+    if (pathname.includes('login') || pathname.includes('singup')) {
       setnavLinksText(['Login', 'Singup']);
     }
   }, [pathname]);
 
   return (
-    <FooterLayout>
+    <NavigationLayout>
       <nav>
-        <FooterList>
+        <NavigationList>
           {navLinksText.map(text => (
-            <FooterItem key={text}>
+            <NavigationItem key={text}>
               <NavigateLink to={`/${text.toLowerCase()}`}>{text}</NavigateLink>
-            </FooterItem>
+            </NavigationItem>
           ))}
-        </FooterList>
+        </NavigationList>
       </nav>
-    </FooterLayout>
+    </NavigationLayout>
   );
 };
 
-export default Footer;
+export default Navigation;

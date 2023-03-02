@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field, Form, ErrorMessage } from 'formik';
+import { button } from 'shared/Button/Button.styled';
 
 export const FormLayout = styled(Form)`
   display: flex;
@@ -34,11 +35,5 @@ export const Input = styled(Field)`
 `;
 
 export const SubmitButton = styled.button`
-  margin-top: 8px;
-  padding: 4px 8px;
-  align-self: center;
-  font-size: 18px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+  ${button}
 `;

@@ -2,10 +2,12 @@ import { ProfileTitle, ProfileWrapper } from './ProfilePage.styled';
 import { ReactComponent as ProfileImage } from 'imgages/profile.svg';
 import { Button } from 'shared';
 import { logOut } from 'redux/auth/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
+  const { name, email } = useSelector(selectUser);
 
   const handleLogoutClick = () => {
     dispatch(logOut());
@@ -14,9 +16,9 @@ const ProfilePage = () => {
   return (
     <main>
       <ProfileWrapper>
-        <ProfileTitle>My Profile</ProfileTitle>
+        <ProfileTitle>{name}</ProfileTitle>
         <ProfileImage width="100" />
-        <p>my emeil</p>
+        <p>{email}</p>
         <Button text="Log out" onButtonClick={handleLogoutClick} />
       </ProfileWrapper>
     </main>

@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { PhoneFrame, Content } from './SharedLayout.styled';
-import { Header, Footer } from 'components';
+import { Header, Navigation } from 'components';
 
 const SharedLayout = () => {
   return (
@@ -11,7 +11,7 @@ const SharedLayout = () => {
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
-        <Footer />
+        <Navigation />
       </Content>
     </PhoneFrame>
   );
