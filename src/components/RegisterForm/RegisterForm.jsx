@@ -1,6 +1,7 @@
-import React from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import { register } from 'redux/auth/operations';
+import { useDispatch } from 'react-redux';
 import {
   FieldWrapper,
   Input,
@@ -10,6 +11,8 @@ import {
 } from './RegisterForm.styled';
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
+
   const initialValues = {
     name: '',
     email: '',
@@ -34,7 +37,8 @@ const RegisterForm = () => {
   });
 
   const handleSubmit = values => {
-    console.log(values);
+    const { confirmPassword, ...credentials } = values;
+    dispatch(register(credentials));
   };
 
   return (

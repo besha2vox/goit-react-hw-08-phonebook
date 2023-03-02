@@ -1,10 +1,14 @@
 import { ProfileTitle, ProfileWrapper } from './ProfilePage.styled';
 import { ReactComponent as ProfileImage } from 'imgages/profile.svg';
 import { Button } from 'shared';
+import { logOut } from 'redux/auth/operations';
+import { useDispatch } from 'react-redux';
 
 const ProfilePage = () => {
+  const dispatch = useDispatch();
+
   const handleLogoutClick = () => {
-    console.log('log out');
+    dispatch(logOut());
   };
 
   return (

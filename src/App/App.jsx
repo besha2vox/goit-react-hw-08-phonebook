@@ -1,9 +1,18 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCurrentUser } from 'redux/auth/operations';
 import { SharedLayout } from 'components';
 import { LoginPage, SingupPage, GreetingsPage } from 'pages';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
   const ContactsPage = lazy(() => import('pages/ContactsPage'));
   const ProfilePage = lazy(() => import('pages/ProfilePage'));
 

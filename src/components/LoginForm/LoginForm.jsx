@@ -8,8 +8,12 @@ import {
   FormLayout,
   SubmitButton,
 } from 'components/RegisterForm/RegisterForm.styled';
+import { logIn } from 'redux/auth/operations';
+import { useDispatch } from 'react-redux';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const initialValues = {
     name: '',
     email: '',
@@ -27,7 +31,7 @@ const LoginForm = () => {
   });
 
   const handleSubmit = values => {
-    console.log(values);
+    dispatch(logIn(values));
   };
 
   return (
