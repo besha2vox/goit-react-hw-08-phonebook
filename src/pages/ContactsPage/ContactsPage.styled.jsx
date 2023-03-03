@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContactsMain = styled.main`
+export const ContactsMain = styled.div`
   position: relative;
   display: flex;
   gap: 12px;

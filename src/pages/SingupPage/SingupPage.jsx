@@ -8,11 +8,7 @@ const SingupPage = () => {
 
   if (isLogedIn) return <Navigate to="/contacts" replace />;
 
-  return (
-    <main>
-      <RegisterForm />
-    </main>
-  );
+  return <RegisterForm />;
 };
 
 export default SingupPage;

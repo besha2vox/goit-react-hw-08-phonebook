@@ -8,11 +8,7 @@ const LoginPage = () => {
 
   if (isLogedIn) return <Navigate to="/contacts" replace />;
 
-  return (
-    <main>
-      <LoginForm />
-    </main>
-  );
+  return <LoginForm />;
 };
 
 export default LoginPage;

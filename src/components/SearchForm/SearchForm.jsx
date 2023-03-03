@@ -3,6 +3,7 @@ import { SearchInput, SearchForm } from './SearchForm.styled';
 const SearchContact = () => {
   const hendleChange = ({ target }) => {
     const filterWord = target.value.toLowerCase();
+    return filterWord;
   };
 
   return (

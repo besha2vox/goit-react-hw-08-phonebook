@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const GreeringsMain = styled.main`
+export const GreeringsMain = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

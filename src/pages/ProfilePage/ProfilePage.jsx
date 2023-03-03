@@ -18,14 +18,12 @@ const ProfilePage = () => {
   if (!isLogedIn) return <Navigate to="/" replace />;
 
   return (
-    <main>
-      <ProfileWrapper>
-        <ProfileTitle>{name}</ProfileTitle>
-        <ProfileImage width="100" />
-        <p>{email}</p>
-        <Button text="Log out" onButtonClick={handleLogoutClick} />
-      </ProfileWrapper>
-    </main>
+    <ProfileWrapper>
+      <ProfileTitle>{name}</ProfileTitle>
+      <ProfileImage width="100" />
+      <p>{email}</p>
+      <Button text="Log out" onButtonClick={handleLogoutClick} />
+    </ProfileWrapper>
   );
 };
 

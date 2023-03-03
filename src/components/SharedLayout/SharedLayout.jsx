@@ -8,9 +8,11 @@ const SharedLayout = () => {
     <PhoneFrame>
       <Content>
         <Header />
-        <Suspense fallback={null}>
-          <Outlet />
-        </Suspense>
+        <main>
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
+        </main>
         <Navigation />
       </Content>
     </PhoneFrame>
