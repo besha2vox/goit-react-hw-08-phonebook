@@ -19,6 +19,11 @@ export const register = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
+      const { code } = error.response.data;
+      if (code === 11000)
+        return rejectWithValue({
+          message: 'User with this email already exists.',
+        });
       return rejectWithValue(error.message);
     }
   }
@@ -32,7 +37,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue({ message: 'Email or password is incorrect.' });
     }
   }
 );

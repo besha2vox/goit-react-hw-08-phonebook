@@ -3,7 +3,7 @@ import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-const SingupPage = () => {
+const SignupPage = () => {
   const isLogedIn = useSelector(selectIsLoggedIn);
 
   if (isLogedIn) return <Navigate to="/contacts" replace />;
@@ -11,4 +11,4 @@ const SingupPage = () => {
   return <RegisterForm />;
 };
 
-export default SingupPage;
+export default SignupPage;

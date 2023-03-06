@@ -17,8 +17,8 @@ const Navigation = () => {
       setnavLinksText(['Contacts', 'Profile']);
     }
 
-    if (pathname.includes('login') || pathname.includes('singup')) {
-      setnavLinksText(['Login', 'Singup']);
+    if (pathname.includes('login') || pathname.includes('signup')) {
+      setnavLinksText(['Login', 'Signup']);
     }
   }, [pathname]);
 

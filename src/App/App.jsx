@@ -6,7 +6,7 @@ import { getCurrentUser } from 'redux/auth/operations';
 import { SharedLayout } from 'components';
 
 const GreetingsPage = lazy(() => import('pages/GreetingsPage'));
-const SingupPage = lazy(() => import('pages/SingupPage'));
+const SignupPage = lazy(() => import('pages/SignupPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
 const ProfilePage = lazy(() => import('pages/ProfilePage'));
@@ -23,7 +23,7 @@ const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<GreetingsPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/singup" element={<SingupPage />} />
+        <Route path="/signup" element={<SignupPage />} />
         <Route path="/contacts" element={<ContactsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Route>

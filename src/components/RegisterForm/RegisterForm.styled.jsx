@@ -12,12 +12,6 @@ export const FieldWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-
-  p {
-    align-self: center;
-    width: 80%;
-    color: #ff8e8e;
-  }
 `;
 
 export const Label = styled.label`
@@ -37,4 +31,21 @@ export const Input = styled(Field)`
 export const SubmitButton = styled.button`
   ${button}
   margin-top: 8px;
+`;
+
+export const ErrorMessages = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 8px auto 0;
+  padding: 8px;
+  gap: 4px;
+  width: fit-content;
+  border: 1px solid #aaaaaa;
+  border-radius: 10px;
+  background-color: #4b4b4b;
+
+  p {
+    font-size: 16px;
+    color: #fcacac;
+  }
 `;
