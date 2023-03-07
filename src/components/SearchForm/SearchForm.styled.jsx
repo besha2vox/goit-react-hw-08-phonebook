@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const SearchForm = styled.form`
-  position: absolute;
+  position: fixed;
   z-index: 1;
-  top: 0;
+  top: 53px;
   left: 0;
   padding: 12px;
   width: 100%;
