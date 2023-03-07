@@ -13,7 +13,10 @@ const Navigation = () => {
   const { pathname } = location;
 
   useEffect(() => {
-    if (pathname.includes('profile') || pathname.includes('contacts')) {
+    if (
+      pathname.includes('profile') ||
+      pathname.includes('contacts') | pathname.includes('contact/')
+    ) {
       setnavLinksText(['Contacts', 'Profile']);
     }
 

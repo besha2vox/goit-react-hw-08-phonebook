@@ -8,3 +8,5 @@ export { default as LoginForm } from './LoginForm';
 export { default as Alert } from './Alert/';
 export { default as ContactList } from './ContactList';
 export { default as EmptyContactList } from './EmptyContactList';
+export { default as ContactForm } from './ContactForm';
+export { default as Modal } from './Modal';

@@ -6,8 +6,12 @@ import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
+import { FormContext, CurrentContactContext } from 'servises/Context';
+import { useState } from 'react';
 
 const SharedLayout = () => {
+  const [formType, setFormType] = useState(null);
+  const [currentContact, setCurrentContact] = useState(null);
   const isLogedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
 
@@ -20,12 +24,18 @@ const SharedLayout = () => {
   return (
     <PhoneFrame>
       <Content>
-        <Header />
-        <main>
-          <Suspense fallback={null}>
-            <Outlet />
-          </Suspense>
-        </main>
+        <FormContext.Provider value={{ formType, setFormType }}>
+          <Header />
+          <main>
+            <CurrentContactContext.Provider
+              value={{ currentContact, setCurrentContact }}
+            >
+              <Suspense fallback={null}>
+                <Outlet />
+              </Suspense>
+            </CurrentContactContext.Provider>
+          </main>
+        </FormContext.Provider>
         <Navigation />
       </Content>
     </PhoneFrame>

@@ -51,7 +51,7 @@ export const Content = styled.div`
   padding-top: 54px;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   color: #ffffff;
   text-shadow: 1px 1px 2px black;
   background-color: #424242;
