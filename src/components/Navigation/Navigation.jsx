@@ -20,8 +20,8 @@ const Navigation = () => {
       setnavLinksText(['Contacts', 'Profile']);
     }
 
-    if (pathname.includes('login') || pathname.includes('signup')) {
-      setnavLinksText(['Login', 'Signup']);
+    if (pathname.includes('log-in') || pathname.includes('sign-up')) {
+      setnavLinksText(['Log-in', 'Sign-up']);
     }
   }, [pathname]);
 

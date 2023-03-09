@@ -1,3 +1,7 @@
+import { useSelector } from 'react-redux';
+import { selectAllContacts } from 'redux/contacts/selectors';
+import { useContext } from 'react';
+import { FilterContext, FetchContactsContext } from 'servises/Context';
 import {
   ContactsList,
   ContactsLink,
@@ -5,13 +9,11 @@ import {
   ContactsCount,
   ContactListWrapper,
 } from './ContactList.styled';
-import { useSelector } from 'react-redux';
-import { selectAllContacts } from 'redux/contacts/selectors';
-import { FilterContext } from 'servises/Context';
-import { useContext } from 'react';
+import { EmptyContactList } from 'components';
 
 const ContactList = () => {
   const contacts = useSelector(selectAllContacts);
+  const { isFetching } = useContext(FetchContactsContext);
   const { filter } = useContext(FilterContext);
   const filteredContacts = contacts.filter(({ name }) =>
     name.toLowerCase().includes(filter)
@@ -19,6 +21,8 @@ const ContactList = () => {
   const sortedContacts = [...filteredContacts].sort((a, b) =>
     a.name.localeCompare(b.name)
   );
+
+  if (isFetching && !contacts.length) return <EmptyContactList />;
 
   return (
     <ContactListWrapper>
@@ -29,9 +33,11 @@ const ContactList = () => {
           </ContactsItem>
         ))}
       </ContactsList>
-      <ContactsCount>
-        {contacts.length} {contacts.length > 1 ? 'contacts' : 'contact'}
-      </ContactsCount>
+      {!!contacts.length && (
+        <ContactsCount>
+          {contacts.length} {contacts.length > 1 ? 'contacts' : 'contact'}
+        </ContactsCount>
+      )}
     </ContactListWrapper>
   );
 };

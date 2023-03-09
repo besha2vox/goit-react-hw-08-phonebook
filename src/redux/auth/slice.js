@@ -83,6 +83,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.error = payload;
         state.isLoading = false;
+        state.token = null;
       });
   },
 });

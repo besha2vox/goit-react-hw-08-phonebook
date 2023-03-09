@@ -6,25 +6,29 @@ import { Button } from 'shared';
 import { FormContext } from 'servises/Context';
 
 const Header = () => {
-  const { setFormType } = useContext(FormContext);
+  const { formType, setFormType } = useContext(FormContext);
   const [buttonText, setButtonText] = useState('');
   const location = useLocation();
   const { pathname } = location;
 
   useEffect(() => {
-    if (pathname === '/contacts') {
+    if (pathname === '/contacts' && !formType) {
       setButtonText('Add');
       return;
     }
-    if (pathname.includes('/contact/')) {
+    if (pathname.includes('/contact/') && !formType) {
       setButtonText('Edit');
       return;
     }
     setButtonText('');
-  }, [pathname]);
+  }, [formType, pathname]);
 
-  const toggleForm = ({ target }) => {
+  const openForm = ({ target }) => {
     setFormType(target.textContent);
+  };
+
+  const closeForm = () => {
+    setFormType('');
   };
 
   const title =
@@ -35,7 +39,10 @@ const Header = () => {
   return (
     <HeaderLayout>
       <Title>{title}</Title>
-      {!!buttonText && <Button text={buttonText} onButtonClick={toggleForm} />}
+      {!!formType && <Button text="Close" onButtonClick={closeForm} />}
+      {!!buttonText && !formType && (
+        <Button text={buttonText} onButtonClick={openForm} />
+      )}
     </HeaderLayout>
   );
 };

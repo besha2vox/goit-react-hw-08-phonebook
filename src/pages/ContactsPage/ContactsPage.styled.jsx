@@ -5,9 +5,6 @@ export const ContactsMain = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 12px;
-  padding-right: 0;
-  padding-top: 55px;
-  padding-bottom: 48px;
+  padding: 50px 12px 0 0;
   height: 100%;
 `;

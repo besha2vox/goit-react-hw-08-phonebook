@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const NavigationLayout = styled.footer`
   position: fixed;
+  z-index: 2;
   bottom: -1px;
   left: 0;
   width: 100%;

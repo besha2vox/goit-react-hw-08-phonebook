@@ -3,19 +3,15 @@ import { ReactComponent as ProfileImage } from 'imgages/profile.svg';
 import { Button } from 'shared';
 import { logOut } from 'redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser, selectIsLoggedIn } from 'redux/auth/selectors';
-import { Navigate } from 'react-router-dom';
+import { selectUser } from 'redux/auth/selectors';
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
   const { name, email } = useSelector(selectUser);
-  const isLogedIn = useSelector(selectIsLoggedIn);
 
   const handleLogoutClick = () => {
     dispatch(logOut());
   };
-
-  if (!isLogedIn) return <Navigate to="/" replace />;
 
   return (
     <ProfileWrapper>

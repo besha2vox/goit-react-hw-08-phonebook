@@ -10,3 +10,6 @@ export { default as ContactList } from './ContactList';
 export { default as EmptyContactList } from './EmptyContactList';
 export { default as ContactForm } from './ContactForm';
 export { default as Modal } from './Modal';
+export { default as PublicRoute } from './PublicRoute';
+export { default as PrivateRoute } from './PrivateRoute';
+export { default as Loader } from './Loader';

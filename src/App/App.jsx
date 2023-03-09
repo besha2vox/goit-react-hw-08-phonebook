@@ -1,9 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCurrentUser } from 'redux/auth/operations';
-import { SharedLayout } from 'components';
+import { SharedLayout, PublicRoute, PrivateRoute } from 'components';
 
 const GreetingsPage = lazy(() => import('pages/GreetingsPage'));
 const SignupPage = lazy(() => import('pages/SignupPage'));
@@ -22,12 +21,16 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route index element={<GreetingsPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
-        <Route path="/contact/:contactId" element={<OneContactPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route element={<PublicRoute />}>
+          <Route path="/" element={<GreetingsPage />} />
+          <Route path="/log-in" element={<LoginPage />} />
+          <Route path="/sign-up" element={<SignupPage />} />
+        </Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/contact/:contactId" element={<OneContactPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+        </Route>
       </Route>
     </Routes>
   );

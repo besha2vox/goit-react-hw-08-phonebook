@@ -1,37 +1,29 @@
-import { SearchForm, ContactList, EmptyContactList } from 'components';
-import { ContactsMain } from './ContactsPage.styled';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { useSelector } from 'react-redux';
 import { FilterContext, FormContext } from 'servises/Context';
 import { useState, useContext, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
-import { selectContactsCount } from 'redux/contacts/selectors';
-import { ContactForm } from 'components';
+import { useSelector } from 'react-redux';
+import { selectIsLoading } from 'redux/auth/selectors';
+import { SearchForm, ContactList, ContactForm, Loader } from 'components';
+import { ContactsMain } from './ContactsPage.styled';
 
 const ContactsPage = () => {
   const [filter, setFilter] = useState('');
-  const isLogedIn = useSelector(selectIsLoggedIn);
-  const contactsCount = useSelector(selectContactsCount);
   const { formType, setFormType } = useContext(FormContext);
   const isFormOpen = Boolean(formType);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     return () => setFormType(null);
   }, [setFormType]);
-
-  if (!isLogedIn) return <Navigate to="/" replace />;
+  console.log(isLoading);
+  if (isLoading) return <Loader />;
 
   return (
     <ContactsMain>
       {isFormOpen && <ContactForm />}
-      {contactsCount > 0 ? (
-        <FilterContext.Provider value={{ filter, setFilter }}>
-          <SearchForm />
-          <ContactList />
-        </FilterContext.Provider>
-      ) : (
-        <EmptyContactList />
-      )}
+      <FilterContext.Provider value={{ filter, setFilter }}>
+        <SearchForm />
+        <ContactList />
+      </FilterContext.Provider>
     </ContactsMain>
   );
 };

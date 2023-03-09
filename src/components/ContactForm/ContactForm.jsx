@@ -1,6 +1,12 @@
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
+import { useContext, useEffect } from 'react';
+import { useAlertMessage } from 'hooks/useAlertMessage';
+import { addContact, updateContact } from 'redux/contacts/operations';
+import { FormContext, CurrentContactContext } from 'servises/Context';
+import { Alert } from 'components';
+import { ContactFormBackdrop, ContactFormWrapper } from './ContactForm.styled';
 import {
   FormLayout,
   FieldWrapper,
@@ -9,13 +15,6 @@ import {
   Input,
   ErrorMessages,
 } from 'components/RegisterForm/RegisterForm.styled';
-import { ContactFormWrapper, CloseBtn } from './ContactForm.styled';
-import { IoIosCloseCircleOutline } from 'react-icons/io';
-import { Alert } from 'components';
-import { useAlertMessage } from 'hooks/useAlertMessage';
-import { addContact, updateContact } from 'redux/contacts/operations';
-import { FormContext, CurrentContactContext } from 'servises/Context';
-import { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const ContactForm = () => {
@@ -86,16 +85,9 @@ const ContactForm = () => {
     showAlertMessage(message);
   };
 
-  const closeForm = () => {
-    setFormType(null);
-  };
-
   return (
-    <>
+    <ContactFormBackdrop>
       <ContactFormWrapper>
-        <CloseBtn type="button" onClick={closeForm}>
-          <IoIosCloseCircleOutline />
-        </CloseBtn>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -130,7 +122,7 @@ const ContactForm = () => {
       {isAlertShow && (
         <Alert message={errorMessage} setIsVisible={setIsAlertShow} />
       )}
-    </>
+    </ContactFormBackdrop>
   );
 };
 

@@ -1,15 +1,18 @@
-import { Suspense } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { PhoneFrame, Content } from './SharedLayout.styled';
-import { Header, Navigation } from 'components';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
-import { FormContext, CurrentContactContext } from 'servises/Context';
-import { useState } from 'react';
+import {
+  FormContext,
+  CurrentContactContext,
+  FetchContactsContext,
+} from 'servises/Context';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { Header, Navigation, Loader } from 'components';
+import { PhoneFrame, Content } from './SharedLayout.styled';
 
 const SharedLayout = () => {
+  const [isFetching, setIsFetching] = useState(false);
   const [formType, setFormType] = useState(null);
   const [currentContact, setCurrentContact] = useState(null);
   const isLogedIn = useSelector(selectIsLoggedIn);
@@ -18,7 +21,14 @@ const SharedLayout = () => {
   useEffect(() => {
     if (!isLogedIn) return;
 
-    dispatch(fetchContacts());
+    const fetch = async () => {
+      const { type } = await dispatch(fetchContacts());
+      if (type === 'contacts/fetchContacts/fulfilled') {
+        setIsFetching(true);
+      }
+    };
+
+    fetch();
   }, [dispatch, isLogedIn]);
 
   return (
@@ -30,8 +40,10 @@ const SharedLayout = () => {
             <CurrentContactContext.Provider
               value={{ currentContact, setCurrentContact }}
             >
-              <Suspense fallback={null}>
-                <Outlet />
+              <Suspense fallback={<Loader />}>
+                <FetchContactsContext.Provider value={{ isFetching }}>
+                  <Outlet />
+                </FetchContactsContext.Provider>
               </Suspense>
             </CurrentContactContext.Provider>
           </main>

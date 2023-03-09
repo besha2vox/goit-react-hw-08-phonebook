@@ -1,16 +1,19 @@
 import { useEffect, useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+
 import { selectAllContacts } from 'redux/contacts/selectors';
 import {
   ProfileTitle,
   ProfileWrapper,
 } from 'pages/ProfilePage/ProfilePage.styled';
+import { CurrentContactContext, FormContext } from 'servises/Context';
+
 import { ReactComponent as ProfileImage } from 'imgages/profile.svg';
 import { FaSms, FaPhoneAlt, FaTrashAlt } from 'react-icons/fa';
+
 import { ButtonsWrapper, RemoveBtn } from './OneContactPage.styled';
 import { ContactForm, Modal } from 'components';
-import { CurrentContactContext, FormContext } from 'servises/Context';
 
 const OneContactPage = () => {
   const { currentContact, setCurrentContact } = useContext(

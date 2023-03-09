@@ -5,3 +5,5 @@ export const FilterContext = createContext();
 export const FormContext = createContext();
 
 export const CurrentContactContext = createContext();
+
+export const FetchContactsContext = createContext();

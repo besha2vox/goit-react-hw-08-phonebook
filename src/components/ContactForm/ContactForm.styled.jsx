@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
-export const ContactFormWrapper = styled.div`
-  position: fixed;
-  padding: 20px;
+export const ContactFormBackdrop = styled.div`
+  position: absolute;
   z-index: 2;
-  top: 53px;
-  left: 0;
+  top: -8px;
+  left: -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  background-color: #2e2e2e9b;
+  background-image: linear-gradient(#2e2e2e 50%, #2e2e2e29);
+`;
+
+export const ContactFormWrapper = styled.div`
+  padding: 20px;
   width: 100%;
   background-color: #444444;
   border-bottom-left-radius: 30px;
@@ -13,26 +20,4 @@ export const ContactFormWrapper = styled.div`
   border: 1px solid #aaaaaa;
   border-top: none;
   box-shadow: 0 2px 4px #242424;
-`;
-
-export const CloseBtn = styled.button`
-  position: absolute;
-  width: fit-content;
-  padding: 0;
-  top: 10px;
-  right: 10px;
-  border: none;
-  background-color: transparent;
-
-  & svg {
-    fill: #aaaaaa;
-    width: 30px;
-    height: 30px;
-    transition: fill 300ms ease-in-out, transform 300ms ease-in-out;
-  }
-
-  &:hover svg {
-    fill: #ffffff;
-    transform: scale(1.2);
-  }
 `;
