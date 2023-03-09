@@ -1,7 +1,7 @@
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useAlertMessage } from 'hooks/useAlertMessage';
 import { addContact, updateContact } from 'redux/contacts/operations';
 import { FormContext, CurrentContactContext } from 'servises/Context';
@@ -31,10 +31,6 @@ const ContactForm = () => {
     errorMessage,
     setErrorMessage,
   } = useAlertMessage();
-
-  useEffect(() => {
-    if (formType === 'Add') setCurrentContact({ name: '', number: '' });
-  }, [formType, setCurrentContact]);
 
   const initialValues = {
     name: currentContact?.name ?? '',

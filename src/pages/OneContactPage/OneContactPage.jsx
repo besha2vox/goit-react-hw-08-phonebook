@@ -26,7 +26,10 @@ const OneContactPage = () => {
 
   useEffect(() => {
     setCurrentContact(contacts.find(({ id }) => contactId === id));
-    return () => setFormType(null);
+    return () => {
+      setFormType(null);
+      setCurrentContact({ name: '', number: '' });
+    };
   }, [contactId, contacts, setCurrentContact, setFormType]);
 
   const onModalOpen = () => {

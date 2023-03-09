@@ -2,7 +2,6 @@ import { LoaderBackdrop } from './Loader.styled';
 import { Oval } from 'react-loader-spinner';
 
 const Loader = () => {
-  console.log(Oval);
   return (
     <LoaderBackdrop>
       <Oval
