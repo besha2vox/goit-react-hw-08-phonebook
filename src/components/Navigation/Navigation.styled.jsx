@@ -39,7 +39,7 @@ export const NavigateLink = styled(NavLink)`
   transition: border 300ms ease-in-out, background-color 300ms ease-in-out;
 
   &.active {
-    background-color: #424242;
+    background-color: #444444;
     border-top: none;
   }
 `;

@@ -19,11 +19,11 @@ export const addContact = createAsyncThunk(
     try {
       const { contacts } = getState();
       const isExist = contacts.items.some(
-        ({ name }) => name.toLowerCase() === data.name.toLowerCase()
+        ({ number }) => number === data.number
       );
       if (isExist) {
         return rejectWithValue({
-          message: `A contact ${data.name} already exists`,
+          message: `A contact with this number already exists`,
         });
       }
       const response = await axios.post('/contacts', data);

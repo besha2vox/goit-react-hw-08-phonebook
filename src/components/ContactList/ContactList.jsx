@@ -15,9 +15,17 @@ const ContactList = () => {
   const contacts = useSelector(selectAllContacts);
   const { isFetching } = useContext(FetchContactsContext);
   const { filter } = useContext(FilterContext);
-  const filteredContacts = contacts.filter(({ name }) =>
-    name.toLowerCase().includes(filter)
-  );
+
+  const filterContacts = () => {
+    const regex = /\d+/;
+    if (regex.test(filter)) {
+      return contacts.filter(({ number }) => number.includes(filter));
+    }
+    return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
+  };
+
+  const filteredContacts = filterContacts();
+
   const sortedContacts = [...filteredContacts].sort((a, b) =>
     a.name.localeCompare(b.name)
   );

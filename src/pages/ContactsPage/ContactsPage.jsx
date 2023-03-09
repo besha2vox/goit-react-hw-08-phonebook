@@ -14,7 +14,6 @@ const ContactsPage = () => {
   useEffect(() => {
     return () => setFormType(null);
   }, [setFormType]);
-  console.log(isLoading);
   if (isLoading) return <Loader />;
 
   return (

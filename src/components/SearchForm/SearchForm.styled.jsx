@@ -13,6 +13,7 @@ export const SearchForm = styled.form`
 `;
 
 export const SearchInput = styled.input`
+  display: block;
   width: 100%;
   border-radius: 30px;
   font-size: 18px;
@@ -25,5 +26,27 @@ export const SearchInput = styled.input`
   &:hover,
   &:focus {
     border-color: #ffffff;
+  }
+`;
+
+export const ClearBtn = styled.button`
+  position: absolute;
+  right: 15px;
+  top: calc(50% + 1px);
+  transform: translateY(-50%);
+  padding: 0;
+  outline: 0;
+  border: none;
+  background-color: transparent;
+
+  & svg {
+    width: 30px;
+    height: 30px;
+    fill: #aaaaaa;
+    transition: fill 300ms ease-in-out;
+  }
+
+  &:hover svg {
+    fill: #ffffff;
   }
 `;
