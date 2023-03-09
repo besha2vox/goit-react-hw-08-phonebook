@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/692.75c113a8.chunk.js","mappings":"gNAMA,EAJmB,WACjB,OAAO,SAAC,KAAD,GACR,C","sources":["pages/SignupPage/SignupPage.jsx"],"sourcesContent":["import { RegisterForm } from 'components';\n\nconst SignupPage = () => {\n  return <RegisterForm />;\n};\n\nexport default SignupPage;\n"],"names":[],"sourceRoot":""}
