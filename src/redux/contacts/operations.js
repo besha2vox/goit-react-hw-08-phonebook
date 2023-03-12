@@ -1,6 +1,31 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+const isExist = (contacts, data, type) => {
+  if (type === 'Add') {
+    return contacts.some(({ id, number }) => {
+      if (id === data.id) {
+        return false;
+      }
+      return number === data.number;
+    });
+  }
+  if (type === 'Edit') {
+    return contacts.some(contact => {
+      if (contact.id === data.id) {
+        return false;
+      }
+      return contact.number === data.number;
+    });
+  }
+};
+
+const isDataChanged = (contacts, data) => {
+  const contact = contacts.find(({ id }) => id === data.id);
+  const { name, number } = contact;
+  return name === data.name && number === data.number;
+};
+
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
   async (_, { rejectWithValue }) => {
@@ -18,10 +43,8 @@ export const addContact = createAsyncThunk(
   async (data, { rejectWithValue, getState }) => {
     try {
       const { contacts } = getState();
-      const isExist = contacts.items.some(
-        ({ number }) => number === data.number
-      );
-      if (isExist) {
+
+      if (isExist(contacts.items, data, 'Add')) {
         return rejectWithValue({
           message: `A contact with this number already exists`,
         });
@@ -52,13 +75,10 @@ export const updateContact = createAsyncThunk(
     const { id, ...contactData } = data;
     try {
       const { contacts } = getState();
-      const isExist = contacts.items.some(contact => {
-        if (contact.id === id) {
-          return false;
-        }
-        return contact.number === data.number;
-      });
-      if (isExist) {
+
+      if (isDataChanged(contacts.items, data)) return data;
+
+      if (isExist(contacts.items, data, 'Edit')) {
         return rejectWithValue({
           message: `A contact with this number already exists`,
         });
