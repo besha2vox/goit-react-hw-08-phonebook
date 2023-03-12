@@ -52,9 +52,12 @@ export const updateContact = createAsyncThunk(
     const { id, ...contactData } = data;
     try {
       const { contacts } = getState();
-      const isExist = contacts.items.some(
-        ({ number }) => number === data.number
-      );
+      const isExist = contacts.items.some(contact => {
+        if (contact.id === id) {
+          return false;
+        }
+        return contact.number === data.number;
+      });
       if (isExist) {
         return rejectWithValue({
           message: `A contact with this number already exists`,
