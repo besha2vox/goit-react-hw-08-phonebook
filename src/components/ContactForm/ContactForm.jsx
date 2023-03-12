@@ -55,26 +55,16 @@ const ContactForm = () => {
   });
 
   const handleSubmit = async values => {
-    let response = null;
-    const { id } = currentContact;
-    switch (formType) {
-      case 'Add':
-        response = await dispatch(addContact(values));
-        break;
-
-      case 'Edit':
-        response = await dispatch(updateContact({ ...values, id }));
-        setCurrentContact(response.payload);
-        break;
-
-      default:
-        break;
-    }
+    const id = currentContact?.id;
+    const response = await dispatch(
+      formType === 'Add' ? addContact(values) : updateContact({ ...values, id })
+    );
 
     const { message } = response.payload;
 
     if (!message) {
       setFormType(null);
+      if (formType === 'Edit') setCurrentContact({ ...values, id });
       return;
     }
     setErrorMessage(message);

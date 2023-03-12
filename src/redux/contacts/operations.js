@@ -48,9 +48,18 @@ export const removeContact = createAsyncThunk(
 
 export const updateContact = createAsyncThunk(
   'contacts/updateContact',
-  async (data, { rejectWithValue }) => {
+  async (data, { rejectWithValue, getState }) => {
     const { id, ...contactData } = data;
     try {
+      const { contacts } = getState();
+      const isExist = contacts.items.some(
+        ({ number }) => number === data.number
+      );
+      if (isExist) {
+        return rejectWithValue({
+          message: `A contact with this number already exists`,
+        });
+      }
       const response = await axios.patch(`/contacts/${id}`, contactData);
       return response.data;
     } catch (error) {

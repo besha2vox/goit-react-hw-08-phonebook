@@ -10,6 +10,7 @@ const LoginPage = lazy(() => import('pages/LoginPage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
 const ProfilePage = lazy(() => import('pages/ProfilePage'));
 const OneContactPage = lazy(() => import('pages/OneContactPage'));
+const NoFoundPage = lazy(() => import('pages/NoFoundPage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/contact/:contactId" element={<OneContactPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Route>
+        <Route path="*" element={<NoFoundPage />} />
       </Route>
     </Routes>
   );

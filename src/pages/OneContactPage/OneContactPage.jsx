@@ -28,7 +28,7 @@ const OneContactPage = () => {
     setCurrentContact(contacts.find(({ id }) => contactId === id));
     return () => {
       setFormType(null);
-      setCurrentContact({ name: '', number: '' });
+      setCurrentContact(null);
     };
   }, [contactId, contacts, setCurrentContact, setFormType]);
 
